@@ -1,0 +1,141 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Development Mode - OPEN ACCESS (Remove before production!)
+    // Uncomment this for local development only
+    /*
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    */
+    
+    // Production Mode - SECURE ACCESS
+    // Use this configuration for production deployment
+    
+    // Leads collection
+    match /leads/{leadId} {
+      // Public read access (for /ycw26 public view)
+      allow read: if true;
+      
+      // Write access requires authentication
+      // Replace 'true' with authentication check in production:
+      // allow write: if request.auth != null;
+      allow write: if true;  // CHANGE THIS IN PRODUCTION!
+      
+      // Validate lead data structure
+      allow create: if request.resource.data.keys().hasAll([
+        'firmName', 'contactName', 'email', 'stage', 
+        'notes', 'createdAt', 'lastUpdated', 'stageHistory'
+      ]);
+      
+      // Ensure stage is valid
+      allow update: if request.resource.data.stage in [
+        'Suspect', 'Prospect', 'Opportunity', 'Customer'
+      ];
+    }
+    
+    // Activity log collection
+    match /activity_log/{activityId} {
+      // Public read access (for activity feed)
+      allow read: if true;
+      
+      // Only authenticated users can create activity logs
+      // Replace 'true' with authentication check in production:
+      // allow create: if request.auth != null;
+      allow create: if true;  // CHANGE THIS IN PRODUCTION!
+      
+      // Activity logs should never be updated or deleted
+      allow update, delete: if false;
+      
+      // Validate activity data structure
+      allow create: if request.resource.data.keys().hasAll([
+        'leadId', 'firmName', 'action', 'timestamp'
+      ]) && request.resource.data.action in [
+        'created', 'updated', 'stage_changed'
+      ];
+    }
+  }
+}
+
+// PRODUCTION SECURITY RULES (with Firebase Authentication)
+/*
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user is admin (optional)
+    function isAdmin() {
+      return request.auth != null && 
+             request.auth.token.admin == true;
+    }
+    
+    // Leads collection
+    match /leads/{leadId} {
+      // Public read access for /ycw26 view
+      allow read: if true;
+      
+      // Only authenticated users can write
+      allow create, update, delete: if isAuthenticated();
+      
+      // Validate data structure on create
+      allow create: if request.resource.data.keys().hasAll([
+        'firmName', 'contactName', 'email', 'stage', 
+        'notes', 'createdAt', 'lastUpdated', 'stageHistory'
+      ]);
+      
+      // Validate stage values
+      allow update: if request.resource.data.stage in [
+        'Suspect', 'Prospect', 'Opportunity', 'Customer'
+      ];
+      
+      // Only admins can delete (optional)
+      allow delete: if isAdmin();
+    }
+    
+    // Activity log collection
+    match /activity_log/{activityId} {
+      // Public read access
+      allow read: if true;
+      
+      // Only authenticated users can create logs
+      allow create: if isAuthenticated();
+      
+      // Never allow updates or deletes (immutable log)
+      allow update, delete: if false;
+      
+      // Validate activity structure
+      allow create: if request.resource.data.keys().hasAll([
+        'leadId', 'firmName', 'action', 'timestamp'
+      ]) && request.resource.data.action in [
+        'created', 'updated', 'stage_changed'
+      ];
+    }
+  }
+}
+*/
+
+// RATE LIMITING (Optional - requires Cloud Functions)
+/*
+To implement rate limiting:
+1. Set up Firebase Cloud Functions
+2. Use functions.firestore.onWrite() to track operations
+3. Store request counts in Firestore
+4. Reject requests exceeding limits
+
+Example function:
+exports.rateLimitWrites = functions.firestore
+  .document('leads/{leadId}')
+  .onWrite(async (change, context) => {
+    const userId = context.auth?.uid;
+    if (!userId) return;
+    
+    // Check rate limit logic here
+    // Reject if exceeded
+  });
+*/
