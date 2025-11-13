@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase-config";
 import Footer from "@/components/Footer";
@@ -116,10 +117,23 @@ export default function YCW26TractionBoard() {
     <main className="min-h-screen bg-[#0a0a0a] text-white">
       <div className="max-w-5xl mx-auto px-6 py-16">
         <header className="mb-16 border-b border-gray-800 pb-8">
-          <h1 className="text-4xl font-semibold text-white mb-2 tracking-tight">
-            Anaya Legal AI Lab — YC W26 Traction Board
-          </h1>
-          <p className="text-sm text-gray-500 mb-4">Updated {currentDate}</p>
+          <div className="flex items-center gap-4 mb-6">
+            <Image
+              src="/logo.png"
+              alt="Legal AI Lab Logo"
+              width={60}
+              height={60}
+              className="object-contain"
+            />
+            <div>
+              <h1 className="text-4xl font-semibold text-white tracking-tight">
+                Anaya Legal AI Lab — YC W26 Traction Board
+              </h1>
+              <p className="text-sm text-gray-500 mt-2">
+                Updated {currentDate}
+              </p>
+            </div>
+          </div>
           <p className="text-lg text-gray-400 leading-relaxed">
             Building private AI infrastructure with law firms — privacy,
             precision, and partnership.

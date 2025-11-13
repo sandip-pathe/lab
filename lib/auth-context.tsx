@@ -4,13 +4,12 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: (email: string, pin: string) => boolean;
+  login: (pin: string) => boolean;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const VALID_EMAIL = "sandippathe9689@gmail.com";
 const VALID_PIN = "8975";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -28,8 +27,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     restoreAuthState();
   }, []);
 
-  const login = (email: string, pin: string) => {
-    if (email === VALID_EMAIL && pin === VALID_PIN) {
+  const login = (pin: string) => {
+    if (pin === VALID_PIN) {
       setIsAuthenticated(true);
       localStorage.setItem("isAuthenticated", "true");
       return true;

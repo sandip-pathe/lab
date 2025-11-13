@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -36,11 +37,28 @@ export default function Hero() {
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10 text-center py-12">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex justify-center mb-8"
+        >
+          <Image
+            src="/logo.png"
+            alt="Legal AI Lab Logo"
+            width={120}
+            height={120}
+            className="object-contain"
+            priority
+          />
+        </motion.div>
+
         {/* Premium badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           className="flex justify-center mb-12"
         >
           <div className="group inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-teal-500/10 to-emerald-500/10 dark:from-teal-500/20 dark:to-emerald-500/20 backdrop-blur-sm border border-teal-200/50 dark:border-gray-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">

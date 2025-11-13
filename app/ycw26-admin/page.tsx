@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   collection,
   addDoc,
@@ -396,13 +397,22 @@ function AdminContent() {
   return (
     <main className="min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">
-            YC W26 Traction Board Admin
-          </h1>
-          <p className="text-gray-400">
-            Update metrics, firms, commitments, insights, and milestones
-          </p>
+        <div className="mb-8 flex items-center gap-4">
+          <Image
+            src="/logo.png"
+            alt="Legal AI Lab Logo"
+            width={50}
+            height={50}
+            className="object-contain"
+          />
+          <div>
+            <h1 className="text-3xl font-bold text-white mb-1">
+              YC W26 Traction Board Admin
+            </h1>
+            <p className="text-gray-400">
+              Update metrics, firms, commitments, insights, and milestones
+            </p>
+          </div>
         </div>
 
         {/* Tabs */}

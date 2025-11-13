@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     "Infrastructure for legal cognition. Join 10 visionary law firms building the future of legal operations.",
   keywords:
     "legal AI, law firms, legal tech, AI factories, legal infrastructure",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

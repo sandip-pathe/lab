@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { useAuth } from "@/lib/auth-context";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
   const [pin, setPin] = useState("");
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const { login } = useAuth();
@@ -13,9 +13,9 @@ export default function LoginForm() {
   const searchParams = useSearchParams();
   const hasAttemptedRef = useRef(false);
 
-  // Auto-submit when credentials are complete
+  // Auto-submit when PIN is complete
   useEffect(() => {
-    if (email && pin.length === 4 && !hasAttemptedRef.current) {
+    if (pin.length === 4 && !hasAttemptedRef.current) {
       hasAttemptedRef.current = true;
 
       // Add a slight delay for smooth UX
@@ -23,35 +23,32 @@ export default function LoginForm() {
         setIsAuthenticating(true);
 
         setTimeout(() => {
-          if (login(email, pin)) {
+          if (login(pin)) {
             const redirectTo = searchParams.get("redirect") || "/dashboard";
             router.push(redirectTo);
           } else {
             setIsAuthenticating(false);
             hasAttemptedRef.current = false;
             // Shake animation on error
-            const inputs = document.querySelectorAll("input");
-            inputs.forEach((input) => {
+            const input = document.querySelector('input[type="password"]');
+            if (input) {
               input.classList.add("animate-shake");
               setTimeout(() => input.classList.remove("animate-shake"), 500);
-            });
+            }
+            // Clear PIN on error
+            setPin("");
           }
         }, 300);
       }, 200);
     }
-  }, [email, pin, login, router, searchParams]);
+  }, [pin, login, router, searchParams]);
 
   const handlePinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value.replace(/\D/g, ""); // Only allow digits
     if (value.length <= 4) {
       setPin(value);
       hasAttemptedRef.current = false;
     }
-  };
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    hasAttemptedRef.current = false;
   };
 
   return (
@@ -64,6 +61,18 @@ export default function LoginForm() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
 
       <div className="relative z-10 max-w-3xl w-full px-8">
+        {/* Logo */}
+        <div className="flex justify-center mb-12">
+          <Image
+            src="/logo.png"
+            alt="Legal AI Lab Logo"
+            width={100}
+            height={100}
+            className="object-contain opacity-90"
+            priority
+          />
+        </div>
+
         {/* Quote Section */}
         <div className="text-center mb-20">
           <p className="text-2xl md:text-3xl font-light text-cyan-100/90 leading-relaxed mb-4 tracking-wide">
@@ -76,24 +85,8 @@ export default function LoginForm() {
           </p>
         </div>
 
-        {/* Login Inputs - No card, just floating inputs */}
-        <div className="space-y-8 max-w-xl mx-auto">
-          <div className="relative">
-            <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              disabled={isAuthenticating}
-              className="w-full px-0 py-4 text-2xl bg-transparent border-b-2 border-cyan-900/50 text-cyan-100 placeholder-cyan-700/50 focus:outline-none focus:border-cyan-500 transition-all duration-300 font-light tracking-wide disabled:opacity-50"
-              placeholder="IDENTITY"
-              autoComplete="email"
-            />
-            <div
-              className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-300"
-              style={{ width: email ? "100%" : "0%" }}
-            ></div>
-          </div>
-
+        {/* PIN Input - Centered and minimal */}
+        <div className="max-w-md mx-auto">
           <div className="relative">
             <input
               type="password"
@@ -101,7 +94,8 @@ export default function LoginForm() {
               onChange={handlePinChange}
               maxLength={4}
               disabled={isAuthenticating}
-              className="w-full px-0 py-4 text-4xl tracking-[0.5em] bg-transparent border-b-2 border-cyan-900/50 text-cyan-100 placeholder-cyan-700/50 focus:outline-none focus:border-cyan-500 transition-all duration-300 font-mono disabled:opacity-50"
+              autoFocus
+              className="w-full px-0 py-6 text-5xl tracking-[0.8em] text-center bg-transparent border-b-2 border-cyan-900/50 text-cyan-100 placeholder-cyan-700/50 focus:outline-none focus:border-cyan-500 transition-all duration-300 font-mono disabled:opacity-50"
               placeholder="••••"
               autoComplete="current-password"
             />
@@ -113,7 +107,7 @@ export default function LoginForm() {
 
           {/* Status indicator */}
           {isAuthenticating && (
-            <div className="text-center">
+            <div className="text-center mt-8">
               <div className="inline-flex items-center gap-3 text-cyan-400/70 text-sm tracking-widest">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></div>
                 AUTHENTICATING
