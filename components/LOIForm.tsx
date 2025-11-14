@@ -178,13 +178,13 @@ export default function LOIForm() {
       id: 0,
       title: "Firm Details",
       component: (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           <input
             type="text"
             name="firmName"
             value={formData.firmName}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="Firm name"
           />
           <input
@@ -192,14 +192,14 @@ export default function LOIForm() {
             name="city"
             value={formData.city}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="City"
           />
           <select
             name="teamSize"
             value={formData.teamSize}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent cursor-pointer"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent cursor-pointer"
           >
             <option value="">Size of team</option>
             <option value="1-5">1-5 people</option>
@@ -212,7 +212,7 @@ export default function LOIForm() {
             name="practiceFocus"
             value={formData.practiceFocus}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="Practice focus (e.g., startup law, M&A)"
           />
         </div>
@@ -222,30 +222,33 @@ export default function LOIForm() {
       id: 1,
       title: "Contact Information",
       component: (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="Email address"
+            autoComplete="email"
           />
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="Your name"
+            autoComplete="name"
           />
           <input
             type="tel"
             name="mobile"
             value={formData.mobile}
             onChange={handleChange}
-            className="w-full text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full text-lg sm:text-xl font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="Mobile number"
+            autoComplete="tel"
           />
         </div>
       ),
@@ -255,11 +258,11 @@ export default function LOIForm() {
       title: "Workflows We Can Help With",
       subtitle: "Which workflows do you want AI to improve first?",
       component: (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {workflowOptions.map((option) => (
             <label
               key={option}
-              className="flex items-center gap-3 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-teal-500 cursor-pointer transition-all"
+              className="flex items-center gap-3 p-3 sm:p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-teal-500 active:border-teal-500 cursor-pointer transition-all min-h-[56px]"
             >
               <input
                 type="checkbox"
@@ -267,9 +270,9 @@ export default function LOIForm() {
                 value={option}
                 checked={formData.workflows.includes(option)}
                 onChange={handleChange}
-                className="w-5 h-5 text-teal-600 rounded"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 rounded flex-shrink-0"
               />
-              <span className="text-lg text-navy-900 dark:text-white">
+              <span className="text-base sm:text-lg text-navy-900 dark:text-white leading-snug">
                 {option}
               </span>
             </label>
@@ -279,7 +282,7 @@ export default function LOIForm() {
             name="workflowsOther"
             value={formData.workflowsOther}
             onChange={handleChange}
-            className="w-full mt-4 text-lg font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-3 bg-transparent"
+            className="w-full mt-2 sm:mt-4 text-base sm:text-lg font-normal text-navy-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-600 focus:border-teal-600 focus:outline-none pb-2 sm:pb-3 bg-transparent"
             placeholder="Other (please specify)"
           />
         </div>
@@ -289,9 +292,9 @@ export default function LOIForm() {
       id: 3,
       title: "Paid Pilot Readiness",
       component: (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <div>
-            <h3 className="text-xl font-bold text-navy-900 dark:text-white mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-navy-900 dark:text-white mb-4">
               Are you open to a paid pilot if the value is clear?
             </h3>
             <div className="space-y-3">
@@ -303,7 +306,7 @@ export default function LOIForm() {
               ].map((option) => (
                 <label
                   key={option}
-                  className="flex items-center gap-3 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-teal-500 cursor-pointer transition-all"
+                  className="flex items-center gap-3 p-3 sm:p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-teal-500 active:border-teal-500 cursor-pointer transition-all min-h-[56px]"
                 >
                   <input
                     type="radio"
@@ -311,9 +314,9 @@ export default function LOIForm() {
                     value={option}
                     checked={formData.paidPilotReadiness === option}
                     onChange={handleChange}
-                    className="w-5 h-5 text-teal-600"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 flex-shrink-0"
                   />
-                  <span className="text-lg text-navy-900 dark:text-white">
+                  <span className="text-base sm:text-lg text-navy-900 dark:text-white leading-snug">
                     {option}
                   </span>
                 </label>
@@ -389,7 +392,7 @@ export default function LOIForm() {
       id: 5,
       title: "Choose How You'd Like to Participate",
       component: (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {[
             {
               value: "pilot",
@@ -414,7 +417,7 @@ export default function LOIForm() {
           ].map((option) => (
             <label
               key={option.value}
-              className="flex items-start gap-4 p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:border-teal-500 cursor-pointer transition-all"
+              className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl hover:border-teal-500 active:border-teal-500 cursor-pointer transition-all"
             >
               <input
                 type="radio"
@@ -422,13 +425,13 @@ export default function LOIForm() {
                 value={option.value}
                 checked={formData.participationChoice === option.value}
                 onChange={handleChange}
-                className="mt-1 w-5 h-5 text-teal-600"
+                className="mt-1 w-5 h-5 sm:w-6 sm:h-6 text-teal-600 flex-shrink-0"
               />
               <div>
-                <h4 className="text-lg font-bold text-navy-900 dark:text-white mb-2">
+                <h4 className="text-base sm:text-lg font-bold text-navy-900 dark:text-white mb-1 sm:mb-2 leading-snug">
                   {option.title}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                   {option.desc}
                 </p>
               </div>
@@ -499,16 +502,16 @@ export default function LOIForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-5xl mx-auto h-full flex flex-col justify-between bg-white dark:bg-gray-900 p-6 lg:p-8 rounded-xl"
+      className="w-full max-w-5xl mx-auto h-full flex flex-col justify-between bg-white dark:bg-gray-900 p-4 sm:p-6 lg:p-8 rounded-xl"
     >
       <div>
         {/* Progress Bar */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">
               Step {currentStep + 1} of {steps.length}
             </span>
-            <span className="text-sm font-medium text-teal-600">
+            <span className="text-xs sm:text-sm font-medium text-teal-600">
               {Math.round(progress)}%
             </span>
           </div>
@@ -529,23 +532,23 @@ export default function LOIForm() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="py-8"
+            className="py-4 sm:py-6 lg:py-8"
           >
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold text-navy-900 dark:text-white mb-2">
+            <div className="mb-5 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-navy-900 dark:text-white mb-2">
                 {currentStepData.title}
               </h2>
               {"subtitle" in currentStepData && currentStepData.subtitle && (
-                <p className="text-lg text-gray-600 dark:text-gray-400">
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
                   {currentStepData.subtitle}
                 </p>
               )}
               {errors.length > 0 && (
-                <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                <div className="mt-3 sm:mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
                   {errors.map((error, idx) => (
                     <p
                       key={idx}
-                      className="text-sm text-red-600 dark:text-red-400"
+                      className="text-xs sm:text-sm text-red-600 dark:text-red-400 leading-relaxed"
                     >
                       ⚠️ {error}
                     </p>
@@ -560,26 +563,27 @@ export default function LOIForm() {
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-between items-center gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+      <div className="flex justify-between items-center gap-2 sm:gap-4 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700 mt-4">
         <button
           type="button"
           onClick={handlePrev}
           disabled={currentStep === 0}
-          className="px-6 py-3 text-gray-600 dark:text-gray-400 hover:text-navy-900 font-medium disabled:opacity-30 disabled:cursor-not-allowed"
+          className="px-3 sm:px-6 py-2 sm:py-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-navy-900 font-medium disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         >
-          ← Previous
+          <span className="hidden sm:inline">← Previous</span>
+          <span className="sm:hidden">←</span>
         </button>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1.5 sm:gap-2">
           {steps.map((_, index) => (
             <div
               key={index}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                 index === currentStep
-                  ? "bg-teal-600 w-8"
+                  ? "bg-teal-600 w-6 sm:w-8"
                   : index < currentStep
                   ? "bg-teal-400"
-                  : "bg-gray-300"
+                  : "bg-gray-300 dark:bg-gray-600"
               }`}
             />
           ))}
@@ -589,17 +593,26 @@ export default function LOIForm() {
           <button
             type="button"
             onClick={handleNext}
-            className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl shadow-lg"
+            className="px-4 sm:px-8 py-3 sm:py-4 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white text-sm sm:text-base font-semibold rounded-lg sm:rounded-xl shadow-lg transition-colors"
           >
-            Next →
+            <span className="hidden sm:inline">Next →</span>
+            <span className="sm:hidden">→</span>
           </button>
         ) : (
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl shadow-lg disabled:opacity-50"
+            className="px-4 sm:px-8 py-3 sm:py-4 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white text-sm sm:text-base font-semibold rounded-lg sm:rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isSubmitting ? "Submitting..." : "Submit & Proceed"}
+            {isSubmitting ? (
+              <span className="flex items-center gap-2">
+                <span className="animate-spin">⏳</span>
+                <span className="hidden sm:inline">Submitting...</span>
+              </span>
+            ) : (
+              <span className="hidden sm:inline">Submit & Proceed</span>
+            )}
+            {!isSubmitting && <span className="sm:hidden">Submit</span>}
           </button>
         )}
       </div>
