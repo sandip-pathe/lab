@@ -12,9 +12,10 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Legal AI Lab Logo"
-                width={35}
+                width={89}
                 height={35}
                 className="object-contain"
+                quality={90}
               />
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
                 Legal AI Lab

@@ -47,10 +47,11 @@ export default function Hero() {
           <Image
             src="/logo.png"
             alt="Legal AI Lab Logo"
-            width={132}
+            width={338}
             height={132}
             className="object-contain"
             priority
+            quality={90}
           />
         </motion.div>
 

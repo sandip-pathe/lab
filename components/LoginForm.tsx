@@ -66,10 +66,11 @@ export default function LoginForm() {
           <Image
             src="/logo.png"
             alt="Legal AI Lab Logo"
-            width={110}
+            width={281}
             height={110}
             className="object-contain opacity-90"
             priority
+            quality={90}
           />
         </div>
 

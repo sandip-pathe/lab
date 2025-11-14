@@ -32,9 +32,10 @@ export default function Navigation() {
             <Image
               src="/logo.png"
               alt="Legal AI Lab Logo"
-              width={44}
+              width={112}
               height={44}
               className="object-contain"
+              quality={90}
             />
             <span className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
               Legal AI Lab
