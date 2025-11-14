@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -9,13 +8,12 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <Image
+              <img
                 src="/logo.png"
                 alt="Legal AI Lab Logo"
                 width={89}
                 height={35}
                 className="object-contain"
-                quality={90}
               />
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
                 Legal AI Lab

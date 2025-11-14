@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -44,14 +43,12 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex justify-center mb-8"
         >
-          <Image
+          <img
             src="/logo.png"
             alt="Legal AI Lab Logo"
             width={338}
             height={132}
             className="object-contain"
-            priority
-            quality={90}
           />
         </motion.div>
 

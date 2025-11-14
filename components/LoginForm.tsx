@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import { useAuth } from "@/lib/auth-context";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -63,14 +62,12 @@ export default function LoginForm() {
       <div className="relative z-10 max-w-3xl w-full px-4 sm:px-8">
         {/* Logo */}
         <div className="flex justify-center mb-8 sm:mb-12">
-          <Image
+          <img
             src="/logo.png"
             alt="Legal AI Lab Logo"
             width={281}
             height={110}
             className="object-contain opacity-90"
-            priority
-            quality={90}
           />
         </div>
 

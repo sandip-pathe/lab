@@ -398,7 +398,7 @@ function AdminContent() {
     <main className="min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <Image
+          <img
             src="/logo.png"
             alt="Legal AI Lab Logo"
             width={55}

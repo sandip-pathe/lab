@@ -118,7 +118,7 @@ export default function YCW26TractionBoard() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
         <header className="mb-12 sm:mb-16 border-b border-gray-800 pb-6 sm:pb-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-            <Image
+            <img
               src="/logo.png"
               alt="Legal AI Lab Logo"
               width={66}
