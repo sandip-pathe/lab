@@ -12,10 +12,15 @@ interface LOIEntry {
   email: string;
   mobile: string;
   firmName: string;
-  employeeSize: string;
-  aiNeeds: string;
-  interestedInPilot: boolean;
-  interestedInLOI: boolean;
+  city: string;
+  teamSize: string;
+  practiceFocus: string;
+  workflows: string[];
+  workflowsOther?: string;
+  documentsPerMonth?: string;
+  paidPilotReadiness: string;
+  shareSamples?: string;
+  participationChoice: string;
   stage: string;
   timestamp: { toDate: () => Date } | null;
   source: string;
@@ -123,14 +128,14 @@ function ResponsesContent() {
                   key={entry.id}
                   className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 hover:border-teal-600 dark:hover:border-teal-400 transition-all"
                 >
-                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-                    {/* Left Column */}
+                  <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
+                    {/* Left Column - Contact & Firm */}
                     <div className="space-y-4">
                       <div>
-                        <h3 className="text-xl font-bold text-navy-900 dark:text-white mb-1">
+                        <h3 className="text-lg sm:text-xl font-bold text-navy-900 dark:text-white mb-1">
                           {entry.name}
                         </h3>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                           {entry.timestamp?.toDate
                             ? new Date(
                                 entry.timestamp.toDate()
@@ -146,62 +151,119 @@ function ResponsesContent() {
                       </div>
 
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                        <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                           Contact
                         </p>
-                        <p className="text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 break-all">
                           📧 {entry.email}
                         </p>
-                        <p className="text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
                           📱 {entry.mobile}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                          Firm
+                        <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          Firm Details
                         </p>
-                        <p className="text-gray-600 dark:text-gray-400">
+                        <p className="text-sm font-medium text-gray-900 dark:text-white">
                           {entry.firmName}
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {entry.employeeSize} employees
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                          📍 {entry.city}
+                        </p>
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                          👥 {entry.teamSize}
+                        </p>
+                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          {entry.practiceFocus}
                         </p>
                       </div>
                     </div>
 
-                    {/* Right Column */}
+                    {/* Middle Column - Workflows & Needs */}
                     <div className="space-y-4">
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                          AI Needs
+                        <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                          Workflows of Interest
                         </p>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                          {entry.aiNeeds}
-                        </p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {entry.workflows?.map((workflow, idx) => (
+                            <span
+                              key={idx}
+                              className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-200"
+                            >
+                              {workflow}
+                            </span>
+                          ))}
+                        </div>
+                        {entry.workflowsOther && (
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                            Other: {entry.workflowsOther}
+                          </p>
+                        )}
                       </div>
 
+                      {entry.documentsPerMonth && (
+                        <div>
+                          <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                            Documents/Month
+                          </p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            {entry.documentsPerMonth}
+                          </p>
+                        </div>
+                      )}
+
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                          Interest
+                        <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          Paid Pilot Readiness
                         </p>
-                        <div className="flex flex-wrap gap-2">
-                          {entry.interestedInPilot && (
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200">
-                              🚀 Pilot Program
-                            </span>
-                          )}
-                          {entry.interestedInLOI && (
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200">
-                              📝 Letter of Intent
-                            </span>
-                          )}
+                        <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200">
+                          {entry.paidPilotReadiness}
+                        </span>
+                      </div>
+
+                      {entry.shareSamples && (
+                        <div>
+                          <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                            Sample Sharing
+                          </p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            {entry.shareSamples}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Right Column - Participation Choice */}
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                          Participation Choice
+                        </p>
+                        <div className="p-3 bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-950/30 dark:to-emerald-950/30 border border-teal-200 dark:border-teal-800 rounded-lg">
+                          <p className="text-sm font-semibold text-teal-900 dark:text-teal-100">
+                            {entry.participationChoice === "pilot" &&
+                              "✔ Join the Pilot"}
+                            {entry.participationChoice === "loi" &&
+                              "✔ Sign LOI (Non-Binding)"}
+                            {entry.participationChoice === "sample" &&
+                              "✔ Show Me a Sample First"}
+                            {entry.participationChoice === "paid" &&
+                              "✔ Paid Pilot (Fast Track)"}
+                          </p>
                         </div>
                       </div>
 
                       <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
                         <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Stage: {entry.stage} · Source: {entry.source}
+                          <span className="font-semibold">Stage:</span>{" "}
+                          {entry.stage}
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          <span className="font-semibold">Source:</span>{" "}
+                          {entry.source}
                         </p>
                       </div>
                     </div>
