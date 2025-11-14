@@ -396,33 +396,33 @@ function AdminContent() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="max-w-6xl mx-auto px-6 py-8">
-        <div className="mb-8 flex items-center gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Image
             src="/logo.png"
             alt="Legal AI Lab Logo"
-            width={50}
-            height={50}
+            width={55}
+            height={55}
             className="object-contain"
           />
-          <div>
-            <h1 className="text-3xl font-bold text-white mb-1">
+          <div className="flex-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1">
               YC W26 Traction Board Admin
             </h1>
-            <p className="text-gray-400">
+            <p className="text-sm sm:text-base text-gray-400">
               Update metrics, firms, commitments, insights, and milestones
             </p>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-8 border-b border-gray-800">
+        <div className="flex gap-1 sm:gap-2 mb-6 sm:mb-8 border-b border-gray-800 overflow-x-auto">
           {["metrics", "firms", "commitments", "insights", "milestones"].map(
             (tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as any)}
-                className={`px-6 py-3 font-medium capitalize ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 font-medium capitalize text-sm sm:text-base whitespace-nowrap ${
                   activeTab === tab
                     ? "text-cyan-400 border-b-2 border-cyan-400"
                     : "text-gray-400 hover:text-white"
@@ -436,9 +436,11 @@ function AdminContent() {
 
         {/* Metrics Tab */}
         {activeTab === "metrics" && (
-          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-            <h2 className="text-xl font-bold mb-6">Engagement Metrics</h2>
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <div className="bg-gray-900 rounded-xl p-4 sm:p-6 border border-gray-800">
+            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+              Engagement Metrics
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
               <div>
                 <label className="block text-sm text-gray-400 mb-2">
                   Firms Contacted

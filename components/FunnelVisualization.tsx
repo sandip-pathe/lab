@@ -108,12 +108,14 @@ export default function FunnelVisualization({
   };
 
   return (
-    <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-      <h2 className="text-xl font-bold text-white mb-6">Sales Funnel</h2>
+    <div className="bg-gray-900 rounded-xl p-4 sm:p-6 border border-gray-800">
+      <h2 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">
+        Sales Funnel
+      </h2>
 
-      <div className="w-full h-[400px] min-h-[400px]">
-        <ResponsiveContainer width="100%" height={400}>
-          <FunnelChart width={600} height={400}>
+      <div className="w-full h-[300px] sm:h-[400px] min-h-[300px] sm:min-h-[400px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <FunnelChart>
             <Tooltip
               contentStyle={{
                 backgroundColor: "#1f2937",
@@ -133,7 +135,7 @@ export default function FunnelVisualization({
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="mt-4 sm:mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
         <div className="text-center p-3 bg-gray-800/50 rounded-lg border border-gray-700">
           <div className="text-2xl font-bold text-teal-300">
             {stageCounts.Suspect}

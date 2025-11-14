@@ -60,8 +60,10 @@ export default function ActivityLog() {
 
   if (isLoading) {
     return (
-      <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-        <h2 className="text-xl font-bold text-white mb-4">Recent Activity</h2>
+      <div className="bg-gray-900 rounded-xl p-4 sm:p-6 border border-gray-800">
+        <h2 className="text-lg sm:text-xl font-bold text-white mb-4">
+          Recent Activity
+        </h2>
         <div className="flex items-center justify-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-700 border-t-teal-500"></div>
         </div>
@@ -70,15 +72,17 @@ export default function ActivityLog() {
   }
 
   return (
-    <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-white">Recent Activity</h2>
-        <span className="text-sm text-gray-400">
+    <div className="bg-gray-900 rounded-xl p-4 sm:p-6 border border-gray-800">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl font-bold text-white">
+          Recent Activity
+        </h2>
+        <span className="text-xs sm:text-sm text-gray-400">
           {activities.length} {activities.length === 1 ? "event" : "events"}
         </span>
       </div>
 
-      <div className="space-y-3 max-h-96 overflow-y-auto">
+      <div className="space-y-2 sm:space-y-3 max-h-80 sm:max-h-96 overflow-y-auto">
         {activities.length === 0 ? (
           <div className="text-center py-8 text-gray-500">
             <p>No activity yet</p>

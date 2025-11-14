@@ -85,18 +85,18 @@ export default function WeeklySummary({ leads }: WeeklySummaryProps) {
   }, [leads]);
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-white">
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-4 sm:p-6 border border-gray-700 shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl font-bold text-white">
           📊 This Week&apos;s Summary
         </h2>
-        <span className="text-xs bg-teal-500/20 text-teal-300 px-3 py-1 rounded-full">
+        <span className="text-xs bg-teal-500/20 text-teal-300 px-3 py-1 rounded-full w-fit">
           Last 7 days
         </span>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

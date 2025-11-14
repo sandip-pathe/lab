@@ -97,14 +97,14 @@ function ResponsesContent() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
-      <div className="flex-1 w-full px-6 py-8">
+      <div className="flex-1 w-full px-4 sm:px-6 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-white mb-2">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-navy-900 dark:text-white mb-2">
               LOI Form Responses
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
               Total submissions: {entries.length}
             </p>
           </div>
@@ -112,18 +112,18 @@ function ResponsesContent() {
           {/* Responses Grid */}
           {entries.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
+              <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg">
                 No responses yet
               </p>
             </div>
           ) : (
-            <div className="grid gap-6">
+            <div className="grid gap-4 sm:gap-6">
               {entries.map((entry) => (
                 <div
                   key={entry.id}
-                  className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-teal-600 dark:hover:border-teal-400 transition-all"
+                  className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 hover:border-teal-600 dark:hover:border-teal-400 transition-all"
                 >
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     {/* Left Column */}
                     <div className="space-y-4">
                       <div>

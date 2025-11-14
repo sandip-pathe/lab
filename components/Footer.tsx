@@ -3,17 +3,17 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-8 px-6 border-t border-gray-200 dark:border-gray-800">
+    <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div className="sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/logo.png"
                 alt="Legal AI Lab Logo"
-                width={32}
-                height={32}
+                width={35}
+                height={35}
                 className="object-contain"
               />
               <span className="text-lg font-semibold text-gray-900 dark:text-white">

@@ -52,7 +52,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden px-4">
       {/* Ambient background effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-black to-cyan-950/20"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.8),rgba(0,0,0,1))]"></div>
@@ -60,26 +60,26 @@ export default function LoginForm() {
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
 
-      <div className="relative z-10 max-w-3xl w-full px-8">
+      <div className="relative z-10 max-w-3xl w-full px-4 sm:px-8">
         {/* Logo */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8 sm:mb-12">
           <Image
             src="/logo.png"
             alt="Legal AI Lab Logo"
-            width={100}
-            height={100}
+            width={110}
+            height={110}
             className="object-contain opacity-90"
             priority
           />
         </div>
 
         {/* Quote Section */}
-        <div className="text-center mb-20">
-          <p className="text-2xl md:text-3xl font-light text-cyan-100/90 leading-relaxed mb-4 tracking-wide">
+        <div className="text-center mb-12 sm:mb-20">
+          <p className="text-xl sm:text-2xl md:text-3xl font-light text-cyan-100/90 leading-relaxed mb-4 tracking-wide px-2">
             One way you create luck and get luckier is to put yourself out there
             more.
           </p>
-          <p className="text-xl md:text-2xl font-extralight text-cyan-300/70 leading-relaxed tracking-wide">
+          <p className="text-lg sm:text-xl md:text-2xl font-extralight text-cyan-300/70 leading-relaxed tracking-wide px-2">
             You systematically put yourself out there where good things can
             happen to you.
           </p>
@@ -95,7 +95,7 @@ export default function LoginForm() {
               maxLength={4}
               disabled={isAuthenticating}
               autoFocus
-              className="w-full px-0 py-6 text-5xl tracking-[0.8em] text-center bg-transparent border-b-2 border-cyan-900/50 text-cyan-100 placeholder-cyan-700/50 focus:outline-none focus:border-cyan-500 transition-all duration-300 font-mono disabled:opacity-50"
+              className="w-full px-0 py-4 sm:py-6 text-4xl sm:text-5xl tracking-[0.8em] text-center bg-transparent border-b-2 border-cyan-900/50 text-cyan-100 placeholder-cyan-700/50 focus:outline-none focus:border-cyan-500 transition-all duration-300 font-mono disabled:opacity-50"
               placeholder="••••"
               autoComplete="current-password"
             />

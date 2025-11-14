@@ -115,36 +115,36 @@ export default function YCW26TractionBoard() {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-5xl mx-auto px-6 py-16">
-        <header className="mb-16 border-b border-gray-800 pb-8">
-          <div className="flex items-center gap-4 mb-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
+        <header className="mb-12 sm:mb-16 border-b border-gray-800 pb-6 sm:pb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
             <Image
               src="/logo.png"
               alt="Legal AI Lab Logo"
-              width={60}
-              height={60}
+              width={66}
+              height={66}
               className="object-contain"
             />
-            <div>
-              <h1 className="text-4xl font-semibold text-white tracking-tight">
+            <div className="flex-1">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
                 Anaya Legal AI Lab — YC W26 Traction Board
               </h1>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-xs sm:text-sm text-gray-500 mt-2">
                 Updated {currentDate}
               </p>
             </div>
           </div>
-          <p className="text-lg text-gray-400 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-400 leading-relaxed">
             Building private AI infrastructure with law firms — privacy,
             precision, and partnership.
           </p>
         </header>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold text-white mb-6">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
             Engagement Metrics
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
             <MetricCard
               value={metrics.firms_contacted}
               label="Firms Contacted"
@@ -173,12 +173,12 @@ export default function YCW26TractionBoard() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold text-white mb-6">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
             Cohort Formation
           </h2>
-          <div className="border border-gray-800 rounded-lg overflow-hidden">
-            <table className="w-full">
+          <div className="border border-gray-800 rounded-lg overflow-x-auto">
+            <table className="w-full min-w-[600px]">
               <thead className="bg-gray-900/50">
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-medium text-gray-400">
@@ -229,11 +229,11 @@ export default function YCW26TractionBoard() {
         </section>
 
         {commitments.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-semibold text-white mb-6">
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
               Partner Commitments
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-3 sm:space-y-4">
               {commitments.map((commitment, idx) => (
                 <div
                   key={idx}
@@ -252,11 +252,11 @@ export default function YCW26TractionBoard() {
         )}
 
         {insights.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-semibold text-white mb-6">
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
               What We&apos;re Learning
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-3 sm:space-y-4">
               {insights.map((insight, idx) => (
                 <div key={idx} className="flex gap-4">
                   <span className="text-cyan-400 font-mono text-sm mt-1">
@@ -272,18 +272,20 @@ export default function YCW26TractionBoard() {
         )}
 
         {milestones.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-semibold text-white mb-6">
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
               Next Milestones
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-3 sm:space-y-4">
               {milestones.map((milestone, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-start border border-gray-800 rounded-lg px-6 py-4 bg-gray-900/20"
+                  className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 border border-gray-800 rounded-lg px-4 sm:px-6 py-4 bg-gray-900/20"
                 >
-                  <p className="text-gray-300">{milestone.goal}</p>
-                  <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
+                  <p className="text-sm sm:text-base text-gray-300">
+                    {milestone.goal}
+                  </p>
+                  <span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
                     {milestone.target_date}
                   </span>
                 </div>
@@ -292,9 +294,9 @@ export default function YCW26TractionBoard() {
           </section>
         )}
 
-        <section className="mb-16 border-t border-gray-800 pt-8">
-          <div className="bg-gray-900/30 border border-gray-800 rounded-lg px-6 py-5">
-            <p className="text-sm text-gray-400 leading-relaxed">
+        <section className="mb-12 sm:mb-16 border-t border-gray-800 pt-6 sm:pt-8">
+          <div className="bg-gray-900/30 border border-gray-800 rounded-lg px-4 sm:px-6 py-4 sm:py-5">
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
               All firm identities anonymized under NDA. Full details (LOIs,
               NDAs) available for YC review under confidentiality.
             </p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function Hero() {
+export default function HeroNew() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-teal-50/30 dark:from-gray-950 dark:via-black dark:to-gray-900">
       {/* Animated background elements */}
@@ -67,7 +67,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
             <span className="text-sm font-semibold bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-teal-400 dark:to-emerald-400 bg-clip-text text-transparent">
-              Cohort 01 • 7/10 Slots Filled
+              Invite-only Cohort · 5 Firms for 2025
             </span>
           </div>
         </motion.div>
@@ -77,43 +77,44 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tight"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight"
         >
           <span className="bg-gradient-to-r from-navy-900 via-slate-800 to-navy-900 dark:from-gray-100 dark:via-white dark:to-gray-100 bg-clip-text text-transparent">
-            Legal AI
+            AI for Mumbai’s
           </span>
           <br />
           <span className="bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-teal-400 dark:to-emerald-400 bg-clip-text text-transparent">
-            Built Different
+            Innovative Law Firms
           </span>
         </motion.h1>
 
-        {/* Refined subheadline */}
-        <motion.p
+        {/* Refined description */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="max-w-3xl mx-auto mb-8"
         >
-          Transform legal documents into structured intelligence.
-          <span className="block mt-2 text-lg text-slate-500 dark:text-gray-500">
-            Join 10 visionary law firms building the future.
-          </span>
-        </motion.p>
+          <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 leading-relaxed mb-6">
+            We’re working with a small group of Mumbai’s most forward-thinking
+            startup-focused law firms to build private AI that cuts review time,
+            improves accuracy, and gives lawyers real leverage — not risk.
+          </p>
+        </motion.div>
 
         {/* Premium CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex justify-center items-center mb-12"
+          className="flex flex-col items-center mb-12"
         >
           <Link
             href="/loi"
             className="group relative px-10 py-5 bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-teal-500 dark:to-emerald-500 text-white font-semibold rounded-2xl shadow-2xl hover:shadow-teal-500/50 dark:hover:shadow-teal-400/30 transition-all duration-300 hover:scale-105 overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Join the Lab
+              Request Invitation to Cohort 01
               <motion.span
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -123,6 +124,9 @@ export default function Hero() {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-500 dark:to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
+          <p className="mt-4 text-sm text-slate-500 dark:text-gray-500">
+            We review every application.
+          </p>
         </motion.div>
 
         {/* Trust badges */}
@@ -144,7 +148,7 @@ export default function Hero() {
                 clipRule="evenodd"
               />
             </svg>
-            No credit card
+            Mumbai-based
           </span>
           <span className="flex items-center gap-2">
             <svg
@@ -158,7 +162,7 @@ export default function Hero() {
                 clipRule="evenodd"
               />
             </svg>
-            Non-binding pilot
+            4-week pilot
           </span>
           <span className="flex items-center gap-2">
             <svg
@@ -172,7 +176,7 @@ export default function Hero() {
                 clipRule="evenodd"
               />
             </svg>
-            Trusted by top firms
+            Private & secure
           </span>
         </motion.div>
       </div>

@@ -98,15 +98,17 @@ export default function FunnelBoard({
   };
 
   return (
-    <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-white mb-2">Sales Pipeline</h2>
-        <p className="text-gray-400 text-sm">
+    <div className="bg-gray-900 rounded-xl p-4 sm:p-6 border border-gray-800">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
+          Sales Pipeline
+        </h2>
+        <p className="text-gray-400 text-xs sm:text-sm">
           Drag and drop leads to change their stage
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {stages.map((stage) => {
           const stageLeads = getLeadsByStage(stage.name);
           const isDropTarget = dragOverStage === stage.name;
@@ -124,17 +126,19 @@ export default function FunnelBoard({
               }`}
             >
               {/* Stage Header */}
-              <div className="p-4 border-b border-gray-700/50">
-                <h3 className={`font-bold text-lg ${stage.color} mb-1`}>
+              <div className="p-3 sm:p-4 border-b border-gray-700/50">
+                <h3
+                  className={`font-bold text-base sm:text-lg ${stage.color} mb-1`}
+                >
                   {stage.name}
                 </h3>
-                <p className="text-sm text-gray-400">
+                <p className="text-xs sm:text-sm text-gray-400">
                   {stageLeads.length} leads
                 </p>
               </div>
 
               {/* Leads List */}
-              <div className="p-2 space-y-2 min-h-[300px] max-h-[600px] overflow-y-auto">
+              <div className="p-2 space-y-2 min-h-[200px] sm:min-h-[300px] max-h-[400px] sm:max-h-[600px] overflow-y-auto">
                 {stageLeads.length === 0 ? (
                   <div className="text-center py-8 text-gray-500 text-sm">
                     Drop leads here

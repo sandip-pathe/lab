@@ -5,7 +5,7 @@ import CaseStudies from "@/components/CaseStudies";
 import BlogArticles from "@/components/BlogArticles";
 import Footer from "@/components/Footer";
 
-export default function HomePage() {
+export default function SandboxPage() {
   return (
     <main className="min-h-screen">
       <HeroNew />
